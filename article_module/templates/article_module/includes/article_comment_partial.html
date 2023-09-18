@@ -1,0 +1,49 @@
+{% load poll_extras %}
+
+<div class="response-area" id="comment_area">
+    <h2> نظرات ({{ comment_counts }})</h2>
+
+    <ul class="media-list">
+
+        {% for commend in commends %}
+            <li class="media" id="single_comments_box_{{ commend.id }}">
+                <a class="pull-right" href="#">
+                    <img class="media-object" src="/static/images/blog/Customer.jpg" alt="">
+                </a>
+                <div class="media-body">
+                    <ul class="sinlge-post-meta">
+                        <li><i class="fa fa-user"></i> {{ commend.user }} </li>
+                        <li><i class="fa fa-clock-o"></i> {{ commend.create_date | time }} </li>
+                        <li><i class="fa fa-calendar"></i> {{ commend.create_date | show_date }}
+                        </li>
+                    </ul>
+                    <p>{{ commend.text }}</p>
+                    <a class="btn btn-primary" onclick="FillParentId( {{ commend.id }} )"><i class="fa fa-reply"></i>پاسـخ</a>
+                </div>
+            </li>
+
+            {% for sub_commend in commend.articlecommend_set.all %}
+                <li class="media second-media" id="single_comments_box_{{ commend.id }}">
+                    <a class="pull-right" href="#">
+                        <img class="media-object" src="/static/images/blog/Customer.jpg" alt="">
+                    </a>
+                    <div class="media-body">
+                        <ul class="sinlge-post-meta">
+                            <li><i class="fa fa-user"></i> {{ sub_commend.user }} </li>
+                            <li><i class="fa fa-clock-o"></i> {{ sub_commend.create_date | time }}
+                            </li>
+                            <li>
+                                <i class="fa fa-calendar"></i> {{ sub_commend.create_date | show_date }}
+                            </li>
+                        </ul>
+                        <p>{{ sub_commend.text }}</p>
+                    </div>
+                </li>
+            {% endfor %}
+
+
+        {% endfor %}
+
+
+    </ul>
+</div><!--/Response-area-->

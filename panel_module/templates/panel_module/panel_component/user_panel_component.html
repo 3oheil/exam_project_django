@@ -1,0 +1,22 @@
+{% comment %}
+ <div class="list-group">
+        <a href="#" class="list-group-item active">
+            اطلاعات کاربر
+        </a>
+        <li><a href="#" class="list-group-item">پنل کاربری</a></li>
+        <a href="{% url 'edit_profile_page' %}" class="list-group-item">ویرایش اطلاعات</a>
+        <a href="#" class="list-group-item">تغییر کلمه عبور </a>
+
+    </div>{% endcomment %}
+
+<ul class="list-group">
+    <li class="list-group-item">
+        <a href="{% url 'panel_dashboard' %}"> پنل کاربری</a>
+    </li>
+    <li class="list-group-item">
+        <a href="{% url 'edit_profile_page' %}"> ویرایش اطلاعات </a>
+    </li>
+    <li class="list-group-item">
+        <a href="{% url 'change_password_page' %}"> تغییر کلمه عبور </a>
+    </li>
+</ul>
