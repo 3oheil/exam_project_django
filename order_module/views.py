@@ -1,4 +1,6 @@
 from django.http import HttpRequest, JsonResponse
+from django.shortcuts import render
+
 from product_module.models import Product
 from .models import Order, OrderDetail
 
@@ -63,3 +65,11 @@ def add_product_to_order(request: HttpRequest):
         return JsonResponse({
             'status': 'not auth'
         })
+
+
+def order_detail_page(request: HttpRequest):
+    product = Product.objects.filter(is_active=True, is_delete=False).first()
+    context = {
+        'product': product
+    }
+    return render(request, 'order_module/order_detail_page.html', context)
